@@ -34,12 +34,22 @@
 
         <!--Set the favicon-->
         <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+
     </head>
 
     <body>
 
         <!-- jQuery (has to load at start of page, as some templates that extend from this base template include jQuery in them) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-2M6FRSXHZQ"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-2M6FRSXHZQ');
+        </script>
 
         <!-- Navigation bar -->
         <nav class="navbar fixed-top navbar-expand-lg">
