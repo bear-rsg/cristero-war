@@ -65,12 +65,14 @@
             <!-- Nav list -->
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ml-auto">
-                    <!-- Photographs -->
-                    <li class="nav-item">
-                        <a class="nav-link{% if "/photographs/" in request.path %} active{% endif %}" href="{% url 'photographs:list' %}">
-                            {% translate 'Photographs' %}
-                        </a>
-                    </li>
+                    {% if user.is_authenticated %}
+                        <!-- Photographs -->
+                        <li class="nav-item">
+                            <a class="nav-link{% if "/photographs/" in request.path %} active{% endif %}" href="{% url 'photographs:list' %}">
+                                {% translate 'Photographs' %}
+                            </a>
+                        </li>
+                    {% endif %}
                     <!-- About -->
                     <li class="nav-item">
                         <a class="nav-link{% if "/about/" in request.path %} active{% endif %}" href="/{{ LANGUAGE_CODE }}/about/">
@@ -106,8 +108,6 @@
                 <div id="footer-content-logos">
                     <!-- University of Birmingham -->
                     <a href="https://www.birmingham.ac.uk/" target="_blank"><img src="{% static 'images/logos/uob.png' %}" alt="University of Birmingham"></a>
-                    <!-- Fotoseptiembre -->
-                    <img src="{% static 'images/logos/fotoseptiembre.png' %}" alt="Fotoseptiembre">
                 </div>
                 <p>
                     <a href="https://www.birmingham.ac.uk/privacy/index.aspx" target="_blank">{% translate 'Privacy' %}</a> |
