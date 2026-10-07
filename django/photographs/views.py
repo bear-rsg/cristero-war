@@ -1,10 +1,11 @@
 from django.views.generic import (CreateView, DetailView, ListView, TemplateView)
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.db.models import Q
 from . import (models, forms)
 
 
-class PhotographListView(ListView):
+class PhotographListView(LoginRequiredMixin, ListView):
     """
     Class-based view for Photograph list template
     """
@@ -31,7 +32,7 @@ class PhotographListView(ListView):
         return context
 
 
-class PhotographDetailView(DetailView):
+class PhotographDetailView(LoginRequiredMixin, DetailView):
     """
     Class-based view for Photograph detail template
     """
@@ -53,7 +54,7 @@ class PhotographDetailView(DetailView):
         return context
 
 
-class PhotographUserContributionCreateView(CreateView):
+class PhotographUserContributionCreateView(LoginRequiredMixin, CreateView):
     """
     Class-based view to create a new models.PhotographUserContribution object in the database.
 
@@ -72,7 +73,7 @@ class PhotographUserContributionCreateView(CreateView):
         return reverse_lazy('photographs:usercontribution-create-fail')
 
 
-class PhotographUserContributionCreateSuccessTemplateView(TemplateView):
+class PhotographUserContributionCreateSuccessTemplateView(LoginRequiredMixin, TemplateView):
     """
     Class-based view to show the PhotographUserContribution create success template
     """
